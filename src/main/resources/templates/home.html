@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:margin-left="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Unemployment rate</title>|
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script type="text/javascript" th:src="@{src/show_chart.js}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body>
+<form class="container" style="margin-bottom: 50px; margin-top: 20px;" method="POST", th:object="${jsonUrl}">
+    <div class="modal-header">
+        <h1 class="col-8">Unemployment rate</h1>
+    </div>
+    <div class="modal-body">
+        <p>Unemployment rate is the number of unemployed people as a percentage of the labour force, where the latter consists of the unemployed plus those in paid or self-employment. Unemployed people are those who report that they are without work, that they are available for work and that they have taken active steps to find work in the last four weeks. When unemployment is high, some people become discouraged and stop looking for work; they are then excluded from the labour force. This implies that the unemployment rate may fall, or stop rising, even though there has been no underlying improvement in the labour market.</p>
+    </div>
+    <div class="modal-footer">
+        <p>By entering below a json-stat file url with unemployment data in countries like <a href="https://json-stat.org/samples/oecd.json">here</a>, you will receive current recent data represented in table and graph format.</p>
+    </div>
+    <div class="container">
+        <div сlass="col-6">
+            <label class="h5" for="search">Enter the web link to json</label>
+            <input id="search" type="text" name="parse" placeholder="Enter URL with a json-stat formatted data" value='https://json-stat.org/samples/oecd.json' pattern="^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?.json" th:field="*{jsonUrl}" required/>
+            <script>
+                var input = document.querySelectorAll('input');
+                for(i=0; i<input.length; i++)   {
+                    input[i].setAttribute('size',input[i].getAttribute('placeholder').length);
+                }
+            </script>
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+<div class="container" id="test" th:style="${submit == true? 'display:block' : 'display:none'}" >
+    <div class="row">
+        <div class="col-6" style="padding: 0;">
+            <h3>Lowest Unemployment Rate:</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Unemployment rate (%)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="entry : ${topBestCountries}">
+                    <td><span th:text="${entry.key}"></span></td>
+                    <td><span th:text="${entry.value}"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h3>Highest Unemployment Rate:</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Unemployment rate (%)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="entry : ${topWorstCountries}">
+                    <td><span th:text="${entry.key}"></span></td>
+                    <td><span th:text="${entry.value}"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <canvas id="myChart"></canvas>
+        </div>
+        <script th:inline="javascript">
+            showChart([[${allCountriesRate}]], [[${topBestCountries}]], [[${topWorstCountries}]]);
+        </script>
+    </div>
+</div>
+
+</body>
+</html>

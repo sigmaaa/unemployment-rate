@@ -1,3 +1,4 @@
+
     function showChart(allCountriesRate, topBestCountries, topWorstCountries) {
         let myChart = document.getElementById('myChart').getContext('2d');
 

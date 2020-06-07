@@ -25,7 +25,7 @@
     <div class="container">
         <div сlass="col-6">
             <label class="h5" for="search">Enter the web link to json</label>
-            <input id="search" type="text" name="parse" placeholder="Enter URL with a json-stat formatted data" value='https://json-stat.org/samples/oecd.json' pattern="^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?.json" th:field="*{jsonUrl}" required/>
+            <input id="search" type="text" name="parse" placeholder="Enter URL with a json-stat formatted data" th:value="${jsonUrl.jsonUrl}" pattern="^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?.json" th:field="*{jsonUrl}" required/>
             <script>
                 var input = document.querySelectorAll('input');
                 for(i=0; i<input.length; i++)   {

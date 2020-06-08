@@ -1,6 +1,6 @@
 package com.app.unemploymentRate.util;
 
-import com.app.unemploymentRate.JsonObjects.CountryRate;
+import com.app.unemploymentRate.model.CountryRate;
 
 import java.util.ArrayList;
 import java.util.HashMap;

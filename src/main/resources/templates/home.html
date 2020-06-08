@@ -21,7 +21,7 @@
         <p>Unemployment rate is the number of unemployed people as a percentage of the labour force, where the latter consists of the unemployed plus those in paid or self-employment. Unemployed people are those who report that they are without work, that they are available for work and that they have taken active steps to find work in the last four weeks. When unemployment is high, some people become discouraged and stop looking for work; they are then excluded from the labour force. This implies that the unemployment rate may fall, or stop rising, even though there has been no underlying improvement in the labour market.</p>
     </div>
     <div class="modal-footer">
-        <p>By entering below a json-stat file url with unemployment data in countries like <a href="https://json-stat.org/samples/oecd.json">here</a>, you will receive current recent data represented in table and graph format.</p>
+        <p>By entering below a URL to a json-stat file with unemployment data in countries like <a href="https://json-stat.org/samples/oecd.json">here</a>, you will receive recent data represented in table and graph format.</p>
     </div>
     <div class="container">
         <div сlass="col-6">
@@ -80,13 +80,15 @@
             showChart([[${allCountriesRateInRecentYear}]], [[${topBestCountries}]], [[${topWorstCountries}]],
                        [[${mostRecentYear}]]);
         </script>
-
-
-        <label for="country-select" id="label-country-select" >Select a country to get the dynamics of unemployment over the years</label>
-        <select th:field="*{countryName}" id="country-select" th:onchange="showLineChart([[${allCountryRate}]])">
-            <option value="Country is not selected">Choose a country</option>
-            <option th:each="countryName : ${countryNames}" th:value="${countryName}" th:text="${countryName}"></option>
-        </select>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <label class="input-group-text"  for="country-select" id="label-country-select" >Select a country to get the dynamics of unemployment over the years</label>
+            </div>
+            <select class="custom-select" th:field="*{countryName}" id="country-select" th:onchange="showLineChart([[${allCountryRate}]])">
+                <option value="Country is not selected">Choose a country</option>
+                <option th:each="countryName : ${countryNames}" th:value="${countryName}" th:text="${countryName}"></option>
+            </select>
+        </div>
 
         <div class="container" id="lineChartContainer">
         </div>

@@ -1,7 +1,7 @@
 package com.app.unemploymentRate.web;
 
-import com.app.unemploymentRate.JsonObjects.CountryRate;
-import com.app.unemploymentRate.JsonObjects.FactoryCountriesData;
+import com.app.unemploymentRate.model.CountryRate;
+import com.app.unemploymentRate.factory.FactoryCountriesData;
 import com.app.unemploymentRate.JsonUrl;
 import com.app.unemploymentRate.util.CountryRateUtil;
 import lombok.extern.slf4j.Slf4j;

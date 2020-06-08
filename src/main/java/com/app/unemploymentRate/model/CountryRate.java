@@ -1,4 +1,4 @@
-package com.app.unemploymentRate.JsonObjects;
+package com.app.unemploymentRate.model;
 
 import lombok.Data;
 

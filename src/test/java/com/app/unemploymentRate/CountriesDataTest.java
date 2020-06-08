@@ -1,8 +1,8 @@
 package com.app.unemploymentRate;
 
 
-import com.app.unemploymentRate.JsonObjects.CountryRate;
-import com.app.unemploymentRate.JsonObjects.FactoryCountriesData;
+import com.app.unemploymentRate.model.CountryRate;
+import com.app.unemploymentRate.factory.FactoryCountriesData;
 import com.app.unemploymentRate.util.CountryRateUtil;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;

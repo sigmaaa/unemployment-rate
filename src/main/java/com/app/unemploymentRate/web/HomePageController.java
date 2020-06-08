@@ -19,6 +19,7 @@ import parser.JSONstatParser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 @Slf4j
 @Controller
@@ -32,7 +33,11 @@ public class HomePageController {
         model.addAttribute("jsonUrl", new JsonUrl());
         model.addAttribute("topBestCountries", new HashMap<String, Double>());
         model.addAttribute("topWorstCountries", new HashMap<String, Double>());
-        model.addAttribute("allCountriesRate", new HashMap<String, Double>());
+        model.addAttribute("allCountriesRateInRecentYear", new HashMap<String, Double>());
+        model.addAttribute("allCountryRates", new ArrayList<CountryRate>());
+        model.addAttribute("countryNames", new HashSet<String>());
+        model.addAttribute("countryName", "");
+        model.addAttribute("mostRecentYear", "");
         return "home";
     }
 
@@ -47,10 +52,13 @@ public class HomePageController {
                 CountryRateUtil.getTopCountriesWithBestRateInYear(dataFromJsonStat, 3,  mostRecentYear));
         model.addAttribute("topWorstCountries",
                 CountryRateUtil.getTopCountriesWithWorstRateInYear(dataFromJsonStat, 3, mostRecentYear));
-        model.addAttribute("allCountriesRate",
+        model.addAttribute("allCountriesRateInRecentYear",
                 CountryRateUtil.getAllCountriesRateByYear(dataFromJsonStat, mostRecentYear));
+        model.addAttribute("allCountryRate", dataFromJsonStat);
         model.addAttribute("submit", true);
-
+        model.addAttribute("countryNames", JSONstatParser.getAllCountryNames(response));
+        model.addAttribute("countryName", "");
+        model.addAttribute("mostRecentYear", JSONstatParser.getMostRecentYear(response));
         return "home";
     }
 }

@@ -1,29 +1,29 @@
 
-    function showChart(allCountriesRate, topBestCountries, topWorstCountries) {
-        let myChart = document.getElementById('myChart').getContext('2d');
+    function showChart(allCountriesRate, topBestCountries, topWorstCountries, year) {
+        let chart = document.getElementById('bar_chart').getContext('2d');
 
         // Global Options
         Chart.defaults.global.defaultFontFamily = 'Lato';
         Chart.defaults.global.defaultFontSize = 18;
         Chart.defaults.global.defaultFontColor = '#777';
-        var myData = [];
-        var myLabels = [];
+        var chartData = [];
+        var chartLabels = [];
         var bestCountries= Object.keys(topBestCountries);
         var worstCountries = Object.keys(topWorstCountries);
 
         keysSorted = Object.keys(allCountriesRate).sort(function(a,b){return allCountriesRate[a]-allCountriesRate[b]});
         keysSorted.forEach(function (entry) {
-            myLabels.push(entry);
-            myData.push(allCountriesRate[entry]);
+            chartLabels.push(entry);
+            chartData.push(allCountriesRate[entry]);
         });
-        let countriesStatChart = new Chart(myChart, {
+        let countriesStatChart = new Chart(chart, {
           type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
           data:{
-            labels: myLabels,
+            labels: chartLabels,
             datasets:[{
               label:[],
-              data: myData,
-              backgroundColor: myLabels.map(function(country) {
+              data: chartData,
+              backgroundColor: chartLabels.map(function(country) {
                 if(country.includes(bestCountries[0]) || country.includes(bestCountries[1]) || country.includes(bestCountries[2])) {
                     return 'rgb(135, 211, 234)';
                  } else if (country.includes(worstCountries[0]) || country.includes(worstCountries[1]) || country.includes(worstCountries[2])) {
@@ -40,7 +40,7 @@
           options:{
             title:{
               display:true,
-              text:'Unemployment rate in the OECD countries 2014',
+              text:'Unemployment rate in the OECD countries ' + year,
               fontSize:25
             },
             legend:{
@@ -58,6 +58,14 @@
                 top:0
               }
             },
+            scales: {
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: "Unemployment rate [%]",
+                }
+              }]
+             },
             tooltips:{
               enabled:true
             }

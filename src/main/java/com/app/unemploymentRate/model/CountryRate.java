@@ -1,6 +1,9 @@
 package com.app.unemploymentRate.model;
 import lombok.Data;
 
+/**
+ * Represents unemployment rate for the country in some year
+ */
 @Data
 public class CountryRate {
 

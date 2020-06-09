@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Creates list of the CountryRate objects
+ */
 public final class FactoryCountriesData {
 
     private FactoryCountriesData() {}

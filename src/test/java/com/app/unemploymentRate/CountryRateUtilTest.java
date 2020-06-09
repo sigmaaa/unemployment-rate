@@ -34,11 +34,11 @@ class CountryRateUtilTest {
         assertTrue(resultEquals, "must be equals to max output size for test data");
 
         resultEquals = testOutputSize2 == CountryRateUtil.getTopCountriesWithBestRateInYear(countryRates, testOutputSize2, "2004").size();
-        assertTrue(resultEquals, "must be equals to 3");
+        assertTrue(resultEquals, "must be equal to 3");
 
         resultEquals = 0 == CountryRateUtil.getTopCountriesWithBestRateInYear(countryRates, testOutputSize3, "2004").size();
 
-        assertTrue(resultEquals, "must be equals to 0");
+        assertTrue(resultEquals, "must be equal to 0");
     }
 
     @Test
@@ -50,13 +50,13 @@ class CountryRateUtilTest {
         if (maxOutputSizeForTestData == CountryRateUtil.getTopCountriesWithWorstRateInYear(countryRates, testOutputSize1, "2004").size()) {
             resultEquals = true;
         }
-        assertTrue(resultEquals, "must be equals to max output size for test data");
+        assertTrue(resultEquals, "must be equal to max output size for test data");
 
         resultEquals = testOutputSize2 == CountryRateUtil.getTopCountriesWithWorstRateInYear(countryRates, testOutputSize2, "2004").size();
-        assertTrue(resultEquals, "must be equals to 3");
+        assertTrue(resultEquals, "must be equal to 3");
 
         resultEquals = 0 == CountryRateUtil.getTopCountriesWithWorstRateInYear(countryRates, testOutputSize3, "2004").size();
 
-        assertTrue(resultEquals, "must be equals to 0");
+        assertTrue(resultEquals, "must be equal to 0");
     }
 }

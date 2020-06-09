@@ -5,6 +5,7 @@ import com.app.unemploymentRate.model.CountryRate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public final class CountryRateUtil {
 
     private CountryRateUtil(){}

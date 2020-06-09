@@ -1,5 +1,4 @@
 package com.app.unemploymentRate.factory;
-
 import com.app.unemploymentRate.model.CountryRate;
 import com.app.unemploymentRate.util.JSONObjectUtil;
 import org.json.JSONArray;

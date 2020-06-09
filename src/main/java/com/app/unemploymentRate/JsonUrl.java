@@ -1,5 +1,4 @@
 package com.app.unemploymentRate;
-
 import lombok.Data;
 
 @Data

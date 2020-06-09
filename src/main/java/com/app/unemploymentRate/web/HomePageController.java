@@ -1,8 +1,8 @@
 package com.app.unemploymentRate.web;
 
-import com.app.unemploymentRate.model.CountryRate;
-import com.app.unemploymentRate.factory.FactoryCountriesData;
 import com.app.unemploymentRate.JsonUrl;
+import com.app.unemploymentRate.factory.FactoryCountriesData;
+import com.app.unemploymentRate.model.CountryRate;
 import com.app.unemploymentRate.util.CountryRateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
@@ -42,7 +42,8 @@ public class HomePageController {
     }
 
     @PostMapping
-    public String processJson(@ModelAttribute("jsonUrl") JsonUrl jsonUrl, Errors errors, Model model) throws IOException, JSONException {
+    public String processJson(@ModelAttribute("jsonUrl") JsonUrl jsonUrl, Errors errors, Model model) throws IOException,
+            JSONException {
 
         String response = restTemplate.getForObject(jsonUrl.getJsonUrl(), String.class);
         ArrayList<CountryRate> dataFromJsonStat = (ArrayList<CountryRate>) FactoryCountriesData.getCountriesData(response);

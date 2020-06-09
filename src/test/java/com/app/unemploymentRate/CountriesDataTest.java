@@ -1,8 +1,8 @@
 package com.app.unemploymentRate;
 
 
-import com.app.unemploymentRate.model.CountryRate;
 import com.app.unemploymentRate.factory.FactoryCountriesData;
+import com.app.unemploymentRate.model.CountryRate;
 import com.app.unemploymentRate.util.CountryRateUtil;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class CountriesDataTest {
+class CountriesDataTest {
 
     @Test
     void testHighestAndLowestEmployeeCountriesByJson() throws IOException, JSONException {
